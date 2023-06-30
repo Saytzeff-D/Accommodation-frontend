@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+<div class="d-flex justify-content-center">
+  <div class="col-xl-6 col-lg-8 col-10 pt-5">
+    <div class="pt-5">
+      <div class="row shadow">
+        <div class="intro col-md-4">
+            <h1 class="text-capitalize p-5 text-white">Login</h1>
+            <h4 class="text-white pr-5 pl-5">
+                Welcome to Linc Hotels and Resorts. A place of Luxury
+            </h4>
+            <h5 class="text-white p-5 mt-5">
+                Login here
+            </h5>
+        </div>
+        <div class="col-md-8 bg-light p-5">
+          <form action="" class="container" (ngSubmit)="login()" #form="ngForm">
+            <div class="alert alert-success alert-dismissible fade show" *ngIf="success !== null">
+              <button type="button" class="close" data-dismiss="alert" (click)="dismissAlert()">&times;</button>
+              <strong>Success!</strong> {{success}}
+            </div>
+            <div class="alert alert-danger alert-dismissible fade show" *ngIf="error !== null">
+              <button type="button" class="close" data-dismiss="alert" (click)="dismissAlert()">&times;</button>
+              <strong>Error!</strong> {{error}}
+            </div>
+            <div class="alert alert-info alert-dismissible fade show" *ngIf="info !== null">
+              <button type="button" class="close" data-dismiss="alert" (click)="dismissAlert()">&times;</button>
+              <strong>Info!</strong> {{info}}
+            </div>
+            <mat-form-field class="w-100 p-1" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input type="email" [formControl]="email" [errorStateMatcher]="matcher"
+                     placeholder="Ex. pat@example.com" matInput>
+              <mat-hint>Errors appear instantly!</mat-hint>
+              <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="email.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+              <mat-form-field class="w-100 p-1" appearance="fill">
+                <mat-label>Create Password</mat-label>
+                <input type="password" minlength="5" [formControl]="password" [errorStateMatcher]="matcher"
+                       placeholder="" matInput>
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="password.hasError('min') && !password.hasError('required')">
+                  Password must be at least 5 Characters
+                </mat-error>
+                <mat-error *ngIf="password.hasError('required')">
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            <button type="submit" mat-raised-button class="btn-block loginBtn"><span [class.d-none]="dontShowWord">Login</span> <span class="spinner-border spinner-border-sm" [class.d-none]="noSpinnerShow"></span></button>
+            <a href="/register" class="float-right pt-1 font-weight-bold" style="color: purple;">Not a user?</a>
+          </form>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>

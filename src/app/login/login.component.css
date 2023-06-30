@@ -1,0 +1,9 @@
+.intro{
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(189, 31, 149, 0.9)), url("/assets/images/hotelBanner.webp");
+  background-attachment: fixed;
+}
+.loginBtn{
+  background-color: purple;
+  color: white;
+  border-radius: 50px;
+}
