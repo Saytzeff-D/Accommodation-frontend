@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+<div class="d-flex justify-content-center pt-5">
+  <div class="col-lg-6 col-md-10">
+    <div class="row pt-5">
+        <div class="intro col-md-4">
+            <h1 class="text-capitalize p-5 text-white">book a room</h1>
+            <h4 class="text-white pr-5 pl-5">
+                Welcome to Linc Hotels and Resorts. A place of Luxury
+            </h4>
+            <h5 class="text-white p-5 mt-5">
+                Linc
+            </h5>
+        </div>
+        <div class="col-md-8 bg-light">
+          <form action="" class="container pt-5" (ngSubmit)="bookNow()" [formGroup]="bookRoom">
+            <div class="alert alert-danger alert-dismissible fade show" *ngIf="error !== ''">
+              <button type="button" class="close" data-dismiss="alert" (click)="dismissAlert()">&times;</button>
+              <strong>Error!</strong> {{error}}
+            </div>
+            <div class="form-row">
+              <mat-form-field appearance="fill" class="w-50 p-1">
+                <mat-label>Check In</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="checkIn" (change)="checkDateDiff()" [min]="today" >
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="w-50 p-1">
+                <mat-label>Check Out</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="checkOut" (change)="checkDateDiff()" [min]="bookRoom.value.checkIn" >
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+            </div>
+  
+            <div class="form-row">
+              <mat-form-field appearance="fill" class="w-50 p-1">
+                <mat-label>Number of Rooms</mat-label>
+                <input type="text" matInput formControlName="rooms">
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="w-50 p-1">
+                <mat-label>Number of Guests</mat-label>
+                <input type="text" matInput formControlName="guests">
+              </mat-form-field>
+            </div>
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Room Category</mat-label>
+                <select matNativeControl required formControlName="category">
+                  <option value="{{each}}" *ngFor="let each of categories">{{each}}</option>
+                </select>
+              </mat-form-field>
+            <!-- <div class="form-group">
+              <label for="">Room Category</label>
+              <select name="" id="" class="form-control" formControlName="roomCategory">
+                <option value="">Select a Room</option>
+                <option value="{{each}}" >{{each}}</option>
+              </select>
+            </div> -->
+            <button type="submit" mat-raised-button style="background-color: purple; color: white;" class="btn-block"><span [class.d-none]="dontShowWord">Book Now </span> <span class="spinner-border spinner-border-sm" [class.d-none]="noSpinnerShow"></span></button>
+            <a href="/user/dashboard" class="float-right pt-1 font-weight-bold" style="color: purple;">Go back Home?</a>
+         </form>
+  
+        </div>
+    </div>
+  </div>
+</div>
