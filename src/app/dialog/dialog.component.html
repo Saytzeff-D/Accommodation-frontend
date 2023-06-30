@@ -1,0 +1,79 @@
+<div *ngIf="!loggingOut && dialogData.type == 'logout'">
+  <p mat-dialog-title>
+    Logout
+  </p>
+  <div mat-dialog-content>
+    Are you sure you want to logout?
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)="onNoClick()">No</button>
+    <button mat-button (click)="onYesClick()">Yes</button>
+  </div>
+</div>
+
+<div *ngIf="dialogData.type == 'checkOut'">
+  <p mat-dialog-title >Are you sure you want to check out this user?</p>
+  <div mat-dialog-content >
+    This user is supposedly to check out on <strong>{{dialogData.checkOut | date: 'fullDate'}}</strong>
+  </div>
+  <div mat-dialog-actions >
+    <button [disabled]="isLoading" (click)="onYesCheckOut()" mat-raised-button class="btn mx-1" color="accent" >Yes</button>
+    <button class="btn btn-light mx-1" (click)="onNoClick()" >No</button>
+  </div>
+</div>
+
+<div *ngIf="dialogData.type == 'deleteBanner'">
+  <p mat-dialog-title >Are you sure you want to delete this Banner?</p>
+  <div mat-dialog-content >
+    This action cannot be undone!
+  </div>
+  <div mat-dialog-actions >
+    <button [disabled]="isLoading" (click)="deleteBanner()" mat-raised-button class="btn mx-1" color="accent" >Yes</button>
+    <button class="btn btn-light mx-1" (click)="onNoClick()" >No</button>
+  </div>
+</div>
+
+<div *ngIf="dialogData.type == 'deleteRoom'">
+  <p mat-dialog-title >Are you sure you want to delete the details of this room?</p>
+  <div mat-dialog-content >
+    This action cannot be undone!
+  </div>
+  <div mat-dialog-actions >
+    <button [disabled]="isLoading" (click)="deleteRoom()" mat-raised-button class="btn mx-1" color="primary" >Yes</button>
+    <button class="btn btn-light mx-1" (click)="onNoClick()" >No</button>
+  </div>
+</div>
+
+<div class="" *ngIf="dialogData.type == 'previewBanner'">
+  <img class="d-block w-100" [src]="dialogData.banner" alt="First slide">
+  <div class="carousel-caption mb-5 pb-5">
+    <div class="mb-5 pb-5 animate__animated animate__slideInUp animate__slow">
+      <!-- <h1 class="text-danger"><span class="font-weight-bold">$3.500</span> / per month</h1> -->
+      <h1 class="caption text-uppercase font-weight-bold">{{dialogData.caption}}</h1>
+      <p class="h4 subCaption text-uppercase"><strong>{{dialogData.subCaption}}</strong></p>
+      <button mat-raised-button color="primary" class="btn btn-lg text-uppercase text-white mb-5 mt-3">book now</button>
+       </div>
+  </div>
+</div>
+
+<div class="" *ngIf="dialogData.type == 'previewRoom'">
+  <div class="container">
+    <div class="col-12">
+      <div class="card roomCard">
+        <img [src]="dialogData.picture" alt="" class="card-img-top img">
+        <div class="card-body">
+          <div class="h5 card-title text-center text-uppercase">
+            {{dialogData.category}}
+          </div>
+          <div class="card-text text-center text-muted">
+            <p>{{dialogData.price | currency: 'NGN': 'symbol-narrow'}}/ per night</p>
+            <p>{{dialogData.available}} rooms available</p>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button mat-raised-button style="background-color: purple; color: white;" >Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
