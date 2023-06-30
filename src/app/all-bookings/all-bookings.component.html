@@ -1,0 +1,44 @@
+<p class="display-4">Bookings</p>
+<p  class="h5 animate__animated animate__fadeOut animate__slower animate__infinite" *ngIf="bookingRecords.length == 0 && !isLoading && error == ''">
+  No recent Bookings
+</p>
+<p class="display-4 text-center text-danger text-italicised" *ngIf="bookingRecords.length == 0 && error !== ''">
+  {{error}}
+</p>
+<div *ngIf="isLoading">
+  <span class="spinner-border text-danger"></span>
+</div>
+<div *ngIf="bookingRecords.length !== 0">
+  <input type="text" class="form-control" [(ngModel)]="filterUser" placeholder="Search Customer" style="border-radius: 50px;">
+  <table class="table table-hover table-responsive-md">
+    <thead>
+      <tr>
+        <th>S/N</th>
+        <th>User</th>
+        <th>Room Category</th>
+        <th>CheckIn - CheckOut</th>
+        <th>Rooms</th>
+        <th>Nights</th>
+        <th>Guests</th>
+        <!-- <th>Status</th> -->
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="bookingRecords.length !== 0">
+      <tr *ngFor="let i=index; let each of bookingRecords | bookingsFilter:filterUser">
+        <td>{{i + 1}}</td>
+        <td>{{each.firstName}} {{each.lastName}}</td>
+        <td>{{each.category}}</td>
+        <td>{{each.checkIn |date}} - {{each.checkOut | date}}</td>
+        <td>{{each.rooms}} room</td>
+        <td>{{each.nights}} nights</td>
+        <td>{{each.guests}} guest</td>
+        <!-- <td>{{each.payment_status}}</td> -->
+        <td>
+          <button (click)="checkOut(each)" mat-raised-button class="btn-danger" [disabled]="each.room_status !== 'Active'">Check Out</button>
+          <span class="badge text-lowercase" [class]="each.status == 'Active' ? 'badge-success' : 'badge-danger'" >{{each.status}}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
