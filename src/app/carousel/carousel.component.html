@@ -1,0 +1,32 @@
+<div id="carouselExampleIndicators" class="carousel slide pt-5" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li id="carouselIndicators" data-target="#carouselExampleIndicators" *ngFor="let i = index; let img of imgArr" [attr.data-slide-to]="i" [class.active]="i== 0"></li>
+    </ol>
+    <div class="carousel-inner pt-2">
+      <div class="carousel-item carouselImg" *ngFor="let i = index; let pic of imgArr" [class.active]="i == 0">
+        <img class="d-block w-100" [src]="pic.banner" style="height: 595px;" alt="First slide">
+        <div class="carousel-caption mb-5 pb-5">
+          <div class="mb-5 pb-5 animate__animated animate__slideInUp animate__slow">
+            <!-- <h1 class="text-danger"><span class="font-weight-bold">$3.500</span> / per month</h1> -->
+            <h1 class="caption text-uppercase font-weight-bold">{{pic.caption}}</h1>
+            <p class="h4 subCaption text-uppercase"><strong>{{pic.subCaption}}</strong></p>
+            <button mat-raised-button color="primary" class="btn btn-lg text-uppercase text-white mb-5 mt-3" (click)="book()">book now</button>
+             </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+<div *ngIf="isLoading" class="d-flex justify-content-center mt-5">
+  <mat-progress-spinner mode="indeterminate" ></mat-progress-spinner>
+</div>
+<p *ngIf="!isLoading && imgArr.length == 0" class="display-4 text-center py-5">
+  Sorry, this page is currently unavailable
+</p>
