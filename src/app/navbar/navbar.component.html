@@ -1,0 +1,23 @@
+<nav class="navbar navbar-inverse fixed-top" style="background-color: purple;">
+        <div class="navbar-header">
+          <a class="navbar-brand text-white" routerLink="/home" style="font-family: 'Courier New', Courier, monospace;">LINC HOTELS AND RESORTS</a>
+        </div>
+        <ul class="nav ml-auto p-1 h6">
+            <li class="nav-item">
+              <a href="/hotel-category" class="nav-link text-white">Rooms</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link text-white dropdown-toggle" style="cursor: pointer;" id="navbarDropdown" data-toggle="dropdown">
+              Get Started
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/register">Register</a>
+              <a class="dropdown-item" href="/login">Login</a>
+              <a class="dropdown-item" href="/admin-login">Admin</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <button mat-raised-button style="background-color: purple; color: white;" (click)="clickOnBookNow()" >Book Now</button>
+          </li>
+        </ul>
+</nav>
