@@ -65,9 +65,9 @@ export class NodeServerService {
     return this.http.patch(`${this.baseUrl}checkOut`, booking);
   }
   deleteRoom(id: any) {
-    return this.http.patch(`${this.baseUrl}room`, id);
+    return this.http.patch(`${this.baseUrl}room/deleteRoom`, id);
   }
   deleteBanner(id: any) {
-    return this.http.patch(`${this.baseUrl}banner`, id);
+    return this.http.patch(`${this.baseUrl}banner/deleteBanner`, id);
   }
 }
