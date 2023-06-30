@@ -43,7 +43,6 @@ export class BookRoomComponent implements OnInit {
   bookNow(): any{
     this.error = '';
     this.bookRoom.value.nights = this.checkDateDiff()
-    console.log(this.bookRoom)
     sessionStorage.removeItem('bookRoomInfo');
     sessionStorage.removeItem('roomCategory');
     if (this.bookRoom.valid && this.bookRoom.value.category !== null) {
@@ -62,13 +61,6 @@ export class BookRoomComponent implements OnInit {
         }
       }, error => {
         console.log(error.error.message)
-        // if (error.error.message == 'Token Expired' || error.error.message == 'Invalid Token') {
-        //   sessionStorage.setItem('route', 'Book-Room')
-        //   sessionStorage.setItem('infoMsg', 'Please Login to continue')
-        //   sessionStorage.setItem('bookRoomInfo', JSON.stringify(this.bookRoom.value))
-        //   this.router.navigate(['login'])
-        // }
-        // else{
           this.noSpinnerShow = true;
           this.dontShowWord = false;
           this.error = 'Unable to Process your request at this time';
@@ -87,12 +79,8 @@ export class BookRoomComponent implements OnInit {
       // this.dateDiff = Time / (1000 * 3600 * 24);
       if (Math.sign(Time / (1000 * 3600 * 24)) === -1 || Math.sign(Time / (1000 * 3600 * 24)) ===  0){
         this.error = 'Check out date invalid';
-        console.log('Red')
         return ''
-        // this.bookRoom.value.numOfNights = '';
       }else {
-        // this.bookRoom.value.numOfNights = Time / (1000 * 3600 * 24) as any;
-        console.log(Time / (1000 * 3600 * 24))
         return Time / (1000 * 3600 * 24)
       }
     }
