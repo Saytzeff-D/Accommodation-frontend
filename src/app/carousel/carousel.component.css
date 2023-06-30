@@ -3,16 +3,24 @@
   width: 10px;
   border-radius: 100% !important;
 }
-.carouselImg{
-  background-color: black;
-  /* z-index: 999999; */
-  backface-visibility: visible;
+.carouselImg::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background:rgba(0,0,0,0.7);
 }
 .caption{
-  font-size: 50px;
-  font-family: 'Times New Roman', Times, serif;
+  font-size: xx-large;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .subCaption{
   font-size: medium;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 5ch;
+}
+.text-purple{
+  color: purple !important;
 }
