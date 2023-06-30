@@ -20,7 +20,7 @@ export class BookRoomComponent implements OnInit {
   public noSpinnerShow = true;
   public dontShowWord = false;
   public dateDiff: any = '';
-  public categories = ['Family Room', 'Single Room', 'Deluxe Room', 'Executive'];
+  public categories = ['Family Room', 'Single Room', 'Executive'];
 
   public bookRoom = new FormGroup({
     checkIn: new FormControl('', Validators.required),

@@ -44,17 +44,12 @@
             </div>
               <mat-form-field appearance="fill" class="w-100">
                 <mat-label>Room Category</mat-label>
-                <select matNativeControl required formControlName="category">
-                  <option value="{{each}}" *ngFor="let each of categories">{{each}}</option>
-                </select>
+                <mat-select formControlName="category">
+                  <mat-option *ngFor="let each of categories" [value]="each">
+                    {{each}}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
-            <!-- <div class="form-group">
-              <label for="">Room Category</label>
-              <select name="" id="" class="form-control" formControlName="roomCategory">
-                <option value="">Select a Room</option>
-                <option value="{{each}}" >{{each}}</option>
-              </select>
-            </div> -->
             <button type="submit" mat-raised-button style="background-color: purple; color: white;" class="btn-block"><span [class.d-none]="dontShowWord">Book Now </span> <span class="spinner-border spinner-border-sm" [class.d-none]="noSpinnerShow"></span></button>
             <a href="/user/dashboard" class="float-right pt-1 font-weight-bold" style="color: purple;">Go back Home?</a>
          </form>
