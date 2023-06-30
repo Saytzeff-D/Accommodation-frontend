@@ -1,0 +1,57 @@
+<h2>Room Details Settings</h2>
+<form action="" enctype="multipart/form-data" [formGroup]="roomDetails">
+  <div class="form-row">
+    <div class="form-group col-4">
+      <label for="category"><strong>Room Category:</strong></label>
+      <select name="" id="" class="form-control" formControlName="category">
+        <option value="">----</option>
+        <option value="{{each}}" *ngFor="let each of categories">{{each}}</option>
+      </select>
+    </div>
+    <div class="form-group col-4">
+      <label for="category"><strong>Price per nights:</strong></label>
+      <input type="text" formControlName="price" class="form-control" placeholder="Enter amount">
+    </div>
+    <div class="form-group col-4">
+      <label for="category"><strong>Available Rooms:</strong></label>
+      <input type="text" formControlName="available" class="form-control" placeholder="How many rooms are available">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="pic"><strong>Picture of the room:</strong></label>
+      <input type="file" (change)="getThePicFile($event)" class="form-control" placeholder="Upload a Picture of the room type for viewers to see">
+    </div>
+  </div>
+  <button mat-raised-button style="background-color: purple; color: white;" (click)="uploadDetails()">Upload Details <span [class.d-none]="noSpinnerShow" class="spinner-border spinner-border-sm"></span></button>
+</form>
+
+<div class="my-1" *ngIf="isLoading">
+  <span class="spinner-border text-danger"></span>
+</div>
+<p *ngIf="!isLoading && details.length == 0 && error == ''" class="display-4 text-center">
+  Nothing is here
+</p>
+<div *ngIf="!isLoading && error !== ''" class="alert alert-danger">
+  <span>{{error}}</span>
+</div>
+<table class="table table-responsive-md table-striped" *ngIf="details.length !== 0">
+  <tr>
+    <th>S/N</th>
+    <th>Room Category</th>
+    <th>Preview</th>
+    <th>Price</th>
+    <th>Available Rooms</th>
+    <th>Action</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let each of details; let i=index">
+    <td>{{i + 1}}</td>
+    <td>{{each.category}}</td>
+    <td><img [src]="each.picture" class="fileImg"></td>
+    <td>{{each.price | currency: 'NGN': 'symbol-narrow'}}</td>
+    <td>{{each.available}}</td>
+    <td><button (click)="preview(each)" mat-raised-button style="background-color: purple; color: white;">Preview</button></td>
+    <td><button (click)="deleteDetails(each)" mat-raised-button style="background-color: purple; color: white;">Delete</button></td>
+  </tr>
+</table>
