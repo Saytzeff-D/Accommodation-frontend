@@ -40,21 +40,21 @@ export class DialogComponent implements OnInit {
       if (res === 'Success'){
         this.dialogRef.close('Check Out');
       }else {
-        this.snackBar.open('An error has occured', 'Dismiss');
+        this.snackBar.open('An error has occured', 'Dismiss', {duration: 4000});
         this.isLoading = false;
       }
     }, err => {
       this.isLoading = false;
-      this.snackBar.open('Internal Server Error', 'Dismiss');
+      this.snackBar.open('Internal Server Error', 'Dismiss', {duration: 4000});
     });
   }
 
   deleteBanner(): any {
     this.isLoading = true;
-    const obj = { id: this.dialogData.banner_id };
+    const obj = { id: this.dialogData._id };
     this.server.deleteBanner(obj).subscribe((res) => {
       this.dialogRef.close(res);
-      this.snackBar.open('Banner deleted successfully', 'Dismiss');
+      this.snackBar.open('Banner deleted successfully', 'Dismiss', {duration: 4000});
     }, (err) => {
       this.isLoading = false;
       console.log(err);
@@ -63,10 +63,10 @@ export class DialogComponent implements OnInit {
 
   deleteRoom(): any {
     this.isLoading = true;
-    const obj = { id: this.dialogData.details_id };
+    const obj = { id: this.dialogData._id };
     this.server.deleteRoom(obj).subscribe((res) => {
       this.dialogRef.close(res);
-      this.snackBar.open('Details deleted successfully', 'Dismiss');
+      this.snackBar.open('Details deleted successfully', 'Dismiss', {duration: 4000});
     }, (err) => {
       console.log(err);
       this.isLoading = false;
