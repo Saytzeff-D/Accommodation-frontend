@@ -10,6 +10,7 @@ import { NodeServerService } from '../services/node-server.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  hide = true
 
   public noSpinnerShow = true
   public dontShowWord = false

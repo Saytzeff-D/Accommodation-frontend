@@ -6,7 +6,7 @@
         <div class="intro col-md-4">
             <h1 class="text-capitalize p-5 text-white">Login</h1>
             <h4 class="text-white pr-5 pl-5">
-                Welcome to Linc Hotels and Resorts. A place of Luxury
+                Welcome to Bohr Hotels and Resorts. A place of Luxury
             </h4>
             <h5 class="text-white p-5 mt-5">
                 Login here
@@ -41,8 +41,11 @@
 
               <mat-form-field class="w-100 p-1" appearance="fill">
                 <mat-label>Create Password</mat-label>
-                <input type="password" minlength="5" [formControl]="password" [errorStateMatcher]="matcher"
+                <input [type]="hide ? 'password' : 'text'" minlength="5" [formControl]="password" [errorStateMatcher]="matcher"
                        placeholder="" matInput>
+                       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
                 <mat-hint>Errors appear instantly!</mat-hint>
                 <mat-error *ngIf="password.hasError('min') && !password.hasError('required')">
                   Password must be at least 5 Characters
