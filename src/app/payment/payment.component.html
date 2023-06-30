@@ -1,0 +1,93 @@
+<p>payment works!</p>
+<app-navbar></app-navbar>
+<div class="container pt-5 mt-5" [class.d-none]="dontShowLoading">
+  <p class="text-center pt-5 h4 animate__animated animate__fadeIn animate__infinite animate__slower">Payment page loading...</p>
+  <p class="text-center h6 animate__animated animate__fadeIn animate__infinite animate__slower">Please wait...</p>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="col-lg-6 col-md-10 pt-3" [class.d-none]="dontShowPage">
+    <div class="pt-5">
+      <div class="row shadow">
+        <div class="intro col-md-4">
+            <h1 class="text-capitalize p-5 text-white">Pay Now</h1>
+            <h4 class="text-white pr-5 pl-5">
+                Proceed with your payment to confirm your booking request. Select any payment method
+            </h4>
+            <h5 class="text-white p-5 mt-5">
+                Pay here
+            </h5>
+        </div>
+        <div class="col-md-8 bg-light p-5">
+          <div class="row">
+            <div class="col-md-4 float-left">
+              <p class="font-weight-bold">Check In</p>
+              <p class="text-muted">{{bookingInfo.checkIn | date}}</p>
+            </div>
+            <div class="col-md-4">
+              <hr>
+            </div>
+            <div class="col-md-4 float-right">
+              <p class="font-weight-bold">Check Out</p>
+              <p class="text-muted">{{bookingInfo.checkOut | date}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-4 float-left">
+              <p class="font-weight-bold">Rooms</p>
+              <p class="text-muted">{{bookingInfo.rooms}} rooms</p>
+            </div>
+            <div class="col-md-4">
+              <p class="font-weight-bold">Guests</p>
+              <p class="text-muted">{{bookingInfo.guests}} guests</p>
+            </div>
+            <div class="col-md-4 float-right">
+              <p class="font-weight-bold">Nights</p>
+              <p class="text-muted">{{bookingInfo.nights}} nights</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <p class="float-left font-weight-bold">Room Category</p>
+            </div>
+            <div class="col-md-6">
+              <p class="text-muted float-right">{{bookingInfo.category}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <p class="float-left font-weight-bold">Price per night</p>
+            </div>
+            <div class="col-md-6">
+              <p class="text-muted float-right">{{roomDetails.price | currency: 'NGN': 'symbol-narrow'}}</p>
+            </div>
+          </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-6">
+            <p class="float-left font-weight-bold">Amount Payable</p>
+          </div>
+          <div class="col-md-6">
+            <p class="text-muted float-right">
+              {{roomDetails.price | multiply: bookingInfo.rooms : bookingInfo.nights |currency: 'NGN': 'symbol-narrow'}}
+            </p>
+          </div>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-end">
+          <button mat-raised-button class="mr-1" (click)="cancel()">Cancel</button>
+          <button mat-raised-button class="payBtn"
+          angular4-paystack
+          [paystackOptions]="options"
+          (paymentInit)="paymentInit()"
+          (onClose)="paymentCancel()"
+          (callback)="paymentDone($event)"
+          >
+          Pay Now
+        </button>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>

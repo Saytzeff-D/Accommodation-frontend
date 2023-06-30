@@ -1,0 +1,11 @@
+.intro{
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(189, 31, 149, 0.9)), url("/assets/images/paystack.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.payBtn{
+  background-color: #800080;
+  color: white;
+  /* border-radius: 50px; */
+}
