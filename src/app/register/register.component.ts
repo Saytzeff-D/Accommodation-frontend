@@ -18,6 +18,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class RegisterComponent implements OnInit {
   registerInfo = { };
+  hide = true
 
   public noSpinnerShow = true;
   public dontShowWord = false;
