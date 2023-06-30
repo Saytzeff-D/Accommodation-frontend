@@ -1,0 +1,28 @@
+.sidenav-container {
+  height: 100%;
+}
+#logoutBtn{
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+}
+.sidenav {
+  width: 200px;
+  background-color: purple;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.active{
+  color: black !important;
+  font-weight: bolder;
+  background-color: white !important;
+  width: 100%;
+}

@@ -1,0 +1,33 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav color="primary" #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <h1 class="pt-5 text-white text-center">Linc Hotels and Resorts</h1>
+    <h3 class="text-center text-white">Admin Dashboard</h3>
+    <hr class="border-white">
+    <mat-nav-list class="text-white mt-5">
+      <a class="text-white h5" mat-list-item routerLink="banner-setting" routerLinkActive="active">Landing Page Setting</a>
+      <a class="text-white h5" mat-list-item routerLink="roomDetails" routerLinkActive="active">Room Details</a>
+      <a class="text-white h5" mat-list-item routerLink="bookingsRecords" routerLinkActive="active">Bookings</a>
+      <a class="text-white h5" mat-list-item routerLink="verifyPayment" routerLinkActive="active">Verify Payment</a>
+    </mat-nav-list>
+    <p class="h6 text-center text-white ml-5" id="logoutBtn" (click)="logOut()"><i class="fa fa-sign-out"></i>Log Out</p>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="text-capitalize">welcome back, admin</span>
+    </mat-toolbar>
+    <div class="p-3">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
