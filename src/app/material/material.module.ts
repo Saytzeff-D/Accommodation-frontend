@@ -17,6 +17,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatAutocompleteModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ],
   exports: [
     MatFormFieldModule,
@@ -60,7 +62,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatAutocompleteModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }
