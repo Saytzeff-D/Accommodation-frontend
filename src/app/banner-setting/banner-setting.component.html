@@ -1,0 +1,44 @@
+<h2>Landing Page Setting - Carousel</h2>
+<form action="" enctype="multipart/form-data" [formGroup]="bannerForm">
+  <div class="form-group">
+    <input type="file" name="" id="" class="form-control" (change)="getTheBanner($event)">
+  </div>
+  <mat-form-field appearance="outline" class="w-50 p-1">
+    <mat-label>Bannner Caption</mat-label>
+    <input type="text" name="" placeholder="Luxury Place to be" matInput formControlName="caption">
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="w-50 p-1">
+    <mat-label>Bannner Sub-Caption</mat-label>
+    <input type="text" name="" placeholder="Enjoy at its peak" matInput formControlName="subCaption">
+  </mat-form-field>
+  <button mat-raised-button style="background-color: purple; color: white;" (click)="setTheBanner()">Set Banner Now <span [class.d-none]="noSpinnerShow" class="spinner-border spinner-border-sm"></span></button>
+</form>
+<!-- Table of Banners -->
+<table class="table table-striped table-responsive-md" *ngIf="bannerFiles.length !== 0">
+  <tr>
+    <th>S/N</th>
+    <th>Preview</th>
+    <th>Caption</th>
+    <th>SubCaption</th>
+    <th>Action</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let files of bannerFiles; let i=index">
+    <td>{{i + 1}}</td>
+    <td><img [src]="files.banner" class="fileImg"></td>
+    <td>{{files.caption}}</td>
+    <td>{{files.subCaption}}</td>
+    <td><button (click)="preview(files)" mat-raised-button style="background-color: purple; color: white;">Preview</button></td>
+    <td><button (click)="deleteBanner(files, i)" mat-raised-button style="background-color: purple; color: white;" [disabled]="isDeleting.index == '1'" >Delete</button></td>
+  </tr>
+</table>
+<!-- Progress Spinner -->
+<div class="my-2" *ngIf="isLoading">
+  <mat-progress-spinner mode="indeterminate" [diameter]="50" ></mat-progress-spinner>
+</div>
+<p *ngIf="!isLoading && bannerFiles.length == 0 && error == ''" class="display-4 text-center">
+  Nothing is here
+</p>
+<div *ngIf="!isLoading && error !== ''" class="alert alert-danger">
+  <span>{{error}}</span>
+</div>
