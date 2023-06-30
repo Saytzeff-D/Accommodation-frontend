@@ -1,0 +1,43 @@
+<mat-sidenav-container class="example-container border">
+  <mat-sidenav #drawer class="bg-purple text-white" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <!-- <mat-toolbar> -->
+      <!-- <div class="text-center mt-4">
+        <img routerLink="/" alt="logo" src="../../../assets/bmi_logo.png" class="" width="85px" height="85px" >
+      </div> -->
+      <p class="h5 text-center pt-5 pl-4 pr-5">Linc Hotels and Resorts</p>
+      <p class="text-center h6 pl-4 pr-5">User View</p>
+      <br>
+    <!-- </mat-toolbar> -->
+    <mat-nav-list>
+      <a mat-list-item routerLinkActive="active" routerLink="dashboard"> Dashboard</a>
+      <a mat-list-item routerLinkActive="active" routerLink="recent-visit"> Recent Visit</a>
+      <a mat-list-item routerLinkActive="active" routerLink="trans-history"> Transaction History</a>
+      <a mat-list-item routerLinkActive="active" routerLink="report-issue"> Report Issue</a>
+    </mat-nav-list>
+    <p class="h6 text-center ml-5" id="logoutBtn" (click)="logOut()"><i class="fa fa-sign-out"></i>Log Out</p>
+  </mat-sidenav>
+  <mat-sidenav-content class="pageContent bg-bmi">
+    <mat-toolbar class="example-toolbar border-bottom py-3 px-2">
+      <div class="">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async"
+          >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+          <div class="float-left">
+            <h1>Welcome <span class="text-purple">{{user.firstName}} {{user.lastName}}</span></h1>
+          </div>
+        </div>
+    </mat-toolbar>
+    <div class="p-3">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

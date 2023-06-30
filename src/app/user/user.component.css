@@ -1,0 +1,35 @@
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+}
+.active{
+  color: purple !important;
+  font-weight: bolder !important;
+  background-color: white !important;
+  width: 100%;
+}
+#sidenavLink{
+  cursor: pointer;
+}
+#logoutBtn{
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+}
+.bg-purple{
+  background-color: purple;
+}
+mat-sidenav {
+  width: 220px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.text-purple{
+  color: purple;
+  font-style: italic;
+}
