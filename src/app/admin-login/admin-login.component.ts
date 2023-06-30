@@ -15,7 +15,7 @@ export class AdminLoginComponent implements OnInit {
   ngOnInit(): void {
   }
   login(){
-    if(this.username.toLowerCase() == 'admin' && this.pword.toLowerCase() == 'linc'){
+    if(this.username.toLowerCase() == 'admin' && this.pword.toLowerCase() == 'admin'){
       this.router.navigate(['admin'])
     }
     else{
