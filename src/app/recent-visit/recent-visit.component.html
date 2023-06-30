@@ -1,0 +1,39 @@
+<div>
+  <p class="h3">Recent Visits</p>
+  <div *ngIf="isLoading">
+    <span class="spinner-border text-danger"></span>
+  </div>
+  <p class="display-4 text-center text-danger text-italicised" *ngIf="visits.length == 0 && error !== ''">
+    {{error}}
+  </p>
+  <p class="h5 animate__animated animate__fadeIn animate__slower" *ngIf="visits.length == 0 && !isLoading && error == ''">No recent Visits</p>
+  <div *ngIf="visits.length !== 0">
+    <input type="text" class="form-control" [(ngModel)]="filterVisit" placeholder="Search by Date" style="border-radius: 50px;">
+    <table class="table table-hover table-responsive-md">
+      <thead>
+        <tr>
+          <th>S/N</th>
+          <th>Check In</th>
+          <th>Check Out</th>
+          <th>Room Category</th>
+          <th>Nights</th>
+          <th>Rooms</th>
+          <th>Guests</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="visits.length !== 0">
+        <tr *ngFor="let i = index; let each of visits | visitFilter: filterVisit">
+          <td>{{i+1}}</td>
+          <td>{{each.checkIn |date}}</td>
+          <td>{{each.checkOut |date}}</td>
+          <td>{{each.category}}</td>
+          <td>{{each.nights}} nights</td>
+          <td>{{each.rooms}} room</td>
+          <td>{{each.guests}} guest</td>
+          <td><button [class]="each.status == 'Active' ? 'btn btn-success animate__animated animate__flash animate__slower animate__infinite' : 'btn btn-danger'" disabled>{{each.status}} </button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
