@@ -1,0 +1,99 @@
+<app-navbar></app-navbar>
+<div class="d-flex justify-content-center">
+  <div class="col-xl-6 col-lg-8 col-10 pt-5">
+    <div class="pt-5">
+      <div class="row shadow-lg w-100 mx-0">
+        <div class="intro col-md-4 d-none d-md-block">
+            <h1 class="text-capitalize p-5 text-white">register</h1>
+            <h4 class="text-white pr-5 pl-5">
+                Welcome to Linc Hotels and Resorts. A place of Luxury
+            </h4>
+            <h5 class="text-white p-5 mt-5">
+                Linc
+            </h5>
+        </div>
+        <div class="col-md-8 bg-light">
+          <form action="" class="container pt-5" (ngSubmit)="register()" #form="ngForm">
+            <mat-form-field class="w-100 p-1" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input type="email" [formControl]="email" [errorStateMatcher]="matcher"
+                     placeholder="Ex. pat@example.com" matInput required>
+              <mat-hint>Errors appear instantly!</mat-hint>
+              <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="email.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+
+            <div>
+              <mat-form-field class="col-sm-6 p-1" appearance="fill">
+                <mat-label>First Name</mat-label>
+                <input type="text" [formControl]="firstName" [errorStateMatcher]="matcher"
+                placeholder="Ifeanyi" matInput required>
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="firstName.hasError('required')">
+                  Firstname is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="col-sm-6 p-1" appearance="fill">
+                <mat-label>Last Name</mat-label>
+                <input type="text" [formControl]="lastName" [errorStateMatcher]="matcher"
+                placeholder="Chigozie" matInput required>
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="lastName.hasError('required')">
+                  Lastname is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field class="col-6 p-1" appearance="fill">
+                <mat-label>Create Password</mat-label>
+                <input type="password" minlength="5" [formControl]="password" [errorStateMatcher]="matcher"
+                       placeholder="" matInput required>
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="password.hasError('min') && !password.hasError('required')">
+                  Password must be at least 5 Characters
+                </mat-error>
+                <mat-error *ngIf="password.hasError('required')">
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="col-6 p-1" appearance="fill">
+                <mat-label>Confirm Password</mat-label>
+                <input type="password" [formControl]="confPassword" [errorStateMatcher]="matcher"
+                       placeholder="" matInput required>
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="confPassword.hasError('notsame') && !confPassword.hasError('required')">
+                  Password not match
+                </mat-error>
+                <mat-error *ngIf="confPassword.hasError('required')">
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <mat-form-field class="w-100 p-1" appearance="fill">
+              <mat-label>Phone Number</mat-label>
+              <input type="text" [formControl]="mobileNumber" [errorStateMatcher]="matcher"
+                     placeholder="+2349087457874" matInput required>
+              <mat-hint>Errors appear instantly!</mat-hint>
+              <mat-error *ngIf="mobileNumber.hasError('pattern') && !mobileNumber.hasError('required')">
+                <strong>Mobile Number</strong> not valid
+              </mat-error>
+              <mat-error *ngIf="mobileNumber.hasError('required')">
+                Mobile Number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <button type="submit" mat-raised-button style="background-color: purple; color: white;" class="btn-block"><span [class.d-none]="dontShowWord">Register Now </span> <span class="spinner-border spinner-border-sm" [class.d-none]="noSpinnerShow"></span></button>
+          </form>
+
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
