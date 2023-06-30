@@ -1,0 +1,35 @@
+<form action="" class="" (ngSubmit)="verify()">
+  <p class="h4">Verify Customer's Payment here</p>
+  <input type="number" placeholder="Payment Reference" class="form-control w-100" [(ngModel)]="payment_ref" name="payment_ref">
+  <button mat-raised-button class="btn-success mt-1" type="submit"><span [class.d-none]="dontShowWord">Verify Now</span> <span class="spinner-border spinner-border-sm" [class.d-none]="noSpinnerShow"></span></button>
+</form>
+<div class="pt-2" *ngIf="paymentDetails.length !== 0">
+  <table class="table table-hover table-success">
+    <tr>
+      <th>S/N</th>
+      <th>Customer's Name</th>
+      <th>Customer's Email</th>
+      <th>No of Rooms</th>
+      <th>Amount Paid</th>
+      <th>Room Category</th>
+      <th>Status</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>{{paymentDetails.firstName}} {{paymentDetails.lastName}}</td>
+      <td>{{paymentDetails.email}}</td>
+      <td>{{paymentDetails.rooms}}</td>
+      <td>{{paymentDetails.amount |currency:'NGN':'symbol-narrow'}}</td>
+      <td>{{paymentDetails.category}}</td>
+      <td>{{paymentDetails.payment_status}}</td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="expiredDate !== ''"class="my-2 alert alert-info">
+  <p class="font-weight-bold">Sorry, this payment expired on {{expiredDate | date: 'fullDate'}}</p>
+</div>
+
+<div *ngIf="error !== ''" class="my-2 alert alert-danger">
+  <p class="font-weight-bold">{{error}}</p>
+</div>
