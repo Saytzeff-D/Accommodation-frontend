@@ -67,6 +67,7 @@ export class RoomDetailsComponent implements OnInit {
   }
 
   deleteDetails(details:any) {
+    console.log(details)
     details.type = 'deleteRoom';
     const dialogRef = this.dialog.open(DialogComponent, { data: details, disableClose: true, width: '400px' });
     dialogRef.afterClosed().subscribe(message => {
