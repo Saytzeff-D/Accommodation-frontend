@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="d-flex justify-content-center">
-  <div class="col-xl-6 col-lg-8 col-10 pt-5">
-    <div class="pt-5">
+  <div class="col-xl-7 col-lg-9 col-12 pt-5">
+    <div class="mt-4 mb-4">
       <div class="row shadow-lg w-100 mx-0">
         <div class="intro col-md-4 d-none d-md-block">
             <h1 class="text-capitalize p-5 text-white">register</h1>
@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-8 bg-light">
           <form action="" class="container pt-5" (ngSubmit)="register()" #form="ngForm">
-            <mat-form-field class="w-100 p-1" appearance="fill">
+            <mat-form-field class="w-100 py-1 px-md-1 px-0" appearance="fill">
               <mat-label>Email</mat-label>
               <input type="email" [formControl]="email" [errorStateMatcher]="matcher"
                      placeholder="Ex. pat@example.com" matInput required>
@@ -29,7 +29,7 @@
 
 
             <div>
-              <mat-form-field class="col-sm-6 p-1" appearance="fill">
+              <mat-form-field class="col-sm-6 py-1 px-md-1 px-0" appearance="fill">
                 <mat-label>First Name</mat-label>
                 <input type="text" [formControl]="firstName" [errorStateMatcher]="matcher"
                 placeholder="Ifeanyi" matInput required>
@@ -39,7 +39,7 @@
                 </mat-error>
               </mat-form-field>
 
-              <mat-form-field class="col-sm-6 p-1" appearance="fill">
+              <mat-form-field class="col-sm-6 py-1 px-md-1 px-0" appearance="fill">
                 <mat-label>Last Name</mat-label>
                 <input type="text" [formControl]="lastName" [errorStateMatcher]="matcher"
                 placeholder="Chigozie" matInput required>
@@ -51,7 +51,7 @@
             </div>
 
             <div>
-              <mat-form-field class="col-6 p-1" appearance="fill">
+              <mat-form-field class="col-sm-12 py-1 px-md-1 px-0" appearance="fill">
                 <mat-label>Create Password</mat-label>
                 <input [type]="hide ? 'password' : 'text'" minlength="5" [formControl]="password" [errorStateMatcher]="matcher"
                        placeholder="" matInput required>
@@ -67,7 +67,7 @@
                 </mat-error>
               </mat-form-field>
 
-              <mat-form-field class="col-6 p-1" appearance="fill">
+              <!-- <mat-form-field class="col-sm-6 py-1 px-md-1 px-0" appearance="fill">
                 <mat-label>Confirm Password</mat-label>
                 <input [type]="hide ? 'password' : 'text'" [formControl]="confPassword" [errorStateMatcher]="matcher"
                        placeholder="" matInput required>
@@ -81,9 +81,9 @@
                 <mat-error *ngIf="confPassword.hasError('required')">
                   Confirm your <strong>Password</strong>
                 </mat-error>
-              </mat-form-field>
+              </mat-form-field> -->
             </div>
-            <mat-form-field class="w-100 p-1" appearance="fill">
+            <mat-form-field class="w-100 py-1 px-md-1 px-0" appearance="fill">
               <mat-label>Phone Number</mat-label>
               <input type="text" [formControl]="mobileNumber" [errorStateMatcher]="matcher"
                      placeholder="+2349087457874" matInput required>
@@ -95,7 +95,12 @@
                 Mobile Number is <strong>required</strong>
               </mat-error>
             </mat-form-field>
-            <button type="submit" mat-raised-button style="background-color: purple; color: white;" class="btn-block"><span [class.d-none]="dontShowWord">Register Now </span> <span class="spinner-border spinner-border-sm" [class.d-none]="noSpinnerShow"></span></button>
+            <button type="submit" mat-raised-button style="background-color: purple; color: white;" class="btn-block my-4">
+              <span [class.d-none]="dontShowWord">
+              Register Now 
+            </span> 
+            <span class="spinner-border spinner-border-sm" [class.d-none]="noSpinnerShow"></span>
+            </button>
           </form>
 
         </div>

@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   constructor(public server: NodeServerService, public router: Router) { }
      email = new FormControl('', [Validators.required, Validators.email]);
      password = new FormControl('', [Validators.min(5), Validators.required]);
-     confPassword = new FormControl('', [Validators.min(5), Validators.required]);
+    //  confPassword = new FormControl('', [Validators.min(5), Validators.required]);
      firstName = new FormControl('', [Validators.required]);
      lastName = new FormControl('', [Validators.required]);
      mobileNumber = new FormControl('', [Validators.required, Validators.pattern('^((\\+234-?)|0)?[0-9]{10}$')]);
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
   register(){
     const initalRoute = sessionStorage.getItem('route');
     const msg = (initalRoute === 'Book-Room') ? 'Login to continue with your bookings' : 'Login Here! We need to verify that it is you';
-    if(this.email.value && this.password.value && this.confPassword.value && this.firstName.value && this.lastName.value && this.mobileNumber.value !== ''){
+    if(this.email.value && this.password.value && this.firstName.value && this.lastName.value && this.mobileNumber.value !== ''){
       this.noSpinnerShow = false;
       this.dontShowWord = true;
     this.registerInfo = {email: this.email.value, password: this.password.value, firstName: this.firstName.value, lastName: this.lastName.value, mobileNumber: this.mobileNumber.value}
