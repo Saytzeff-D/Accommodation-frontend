@@ -48,7 +48,7 @@
 <div id="carouselExampleIndicators" class="container carousel slide" data-ride="carousel">
     <div class="carousel-inner pt-2">
       <div class="carousel-item carouselImg" *ngFor="let i = index; let roomArr of roomGroups" [class.active]="i == 0" data-interval="5000">
-        <div class="container">
+        <div class="container-fluid">
           <div class="row w-100 mx-auto">
             <div class="col-lg-4 col-md-6 mb-1" *ngFor="let each of roomArr; let i=index">
               <div class="card roomCard">
